@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BITe 직원 포털</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>BITe 직원 전용 포털</h1>
+  </header>
+  <nav>
+    <button onclick="showSection('chart')">분석 차트</button>
+    <button onclick="showSection('research')">연구 현황</button>
+    <button onclick="showSection('kanban')">진행 보드</button>
+    <button onclick="showSection('purchase')">구매 물품</button>
+    <button onclick="showSection('creations')">창조 생물</button>
+    <button onclick="showSection('about')">회사 소개</button>
+  </nav>
+
+  <main>
+    <section id="chart" class="content active">
+      <h2>DNA 분석 차트</h2>
+      <canvas id="dnaChart" width="400" height="200"></canvas>
+    </section>
+
+    <section id="research" class="content">
+      <h2>현재 연구 과제</h2>
+      <div class="input-group">
+        <input type="text" id="newTaskInput" placeholder="연구 과제 입력..." />
+        <button onclick="addTask()">추가</button>
+      </div>
+      <ul id="taskList" class="list"></ul>
+    </section>
+
+    <section id="kanban" class="content">
+      <h2>연구 진행 보드</h2>
+      <div class="board">
+        <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <h3>할 일</h3>
+          <div id="todo" class="task-column"></div>
+        </div>
+        <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <h3>진행 중</h3>
+          <div id="inprogress" class="task-column"></div>
+        </div>
+        <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <h3>완료</h3>
+          <div id="done" class="task-column"></div>
+        </div>
+      </div>
+      <div class="input-group">
+        <input type="text" id="kanbanInput" placeholder="새 작업..." />
+        <button onclick="addKanbanCard()">추가</button>
+      </div>
+    </section>
+
+    <section id="purchase" class="content">
+      <h2>구매 요청 목록</h2>
+      <div class="input-group">
+        <input type="text" id="itemInput" placeholder="구매할 물품..." />
+        <button onclick="addItem()">추가</button>
+      </div>
+      <ul id="itemList" class="list"></ul>
+    </section>
+
+    <section id="creations" class="content">
+      <h2>창조 생명체 게시판</h2>
+      <div class="input-group">
+        <input type="text" id="creatureName" placeholder="이름" />
+        <input type="text" id="creatureDesc" placeholder="특징" />
+        <button onclick="addCreature()">등록</button>
+      </div>
+      <ul id="creatureBoard" class="list"></ul>
+    </section>
+
+    <section id="about" class="content">
+      <h2>회사 소개</h2>
+      <p><strong>BITe는 새로운 동식물을 창조시키고 세상을 만들어 나갑니다.</strong></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
